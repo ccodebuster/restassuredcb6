@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class BookingTest {
+public class BookingTestWithSteps {
     ValidatableResponse validatableResponse;
     String authToken;
     int id;
@@ -45,28 +45,28 @@ public class BookingTest {
                 "    \"additionalneeds\": \"Breakfast\"\n" +
                 "}";*/
 
-            Bookingdates bookingdates = new Bookingdates();
-            bookingdates.setCheckin("2023-04-16");
-            bookingdates.setCheckout("2023-04-23");
+        Bookingdates bookingdates = new Bookingdates();
+        bookingdates.setCheckin("2023-04-16");
+        bookingdates.setCheckout("2023-04-23");
 
-            BookingPojo bookingPojo = new BookingPojo();
-            bookingPojo.setFirstname("bhavesh");
-            bookingPojo.setLastname("patel");
-            bookingPojo.setTotalprice(400);
-            bookingPojo.setDepositpaid(true);
-            bookingPojo.setBookingdates(bookingdates);
-            bookingPojo.setAdditionalneeds("snacks");
+        BookingPojo bookingPojo = new BookingPojo();
+        bookingPojo.setFirstname("bhavesh");
+        bookingPojo.setLastname("patel");
+        bookingPojo.setTotalprice(400);
+        bookingPojo.setDepositpaid(true);
+        bookingPojo.setBookingdates(bookingdates);
+        bookingPojo.setAdditionalneeds("snacks");
 
 
-       validatableResponse = given()
+        validatableResponse = given()
                 .contentType(ContentType.JSON)
                 .body(bookingPojo)
                 .when()
                 .post("/booking")
                 .then()
-               .log().all();
+                .log().all();
 
-      id = validatableResponse.extract().path("bookingid"); // extracting id
+        id = validatableResponse.extract().path("bookingid"); // extracting id
     }
 
 
@@ -88,14 +88,14 @@ public class BookingTest {
                 "    \"username\" : \"admin\",\n" +
                 "    \"password\" : \"password123\"\n" +
                 "}";
-     validatableResponse =given()
+        validatableResponse =given()
                 .header("Content-Type", "application/json")
                 .when()
                 .body(AuthBody)
                 .post("/auth")
                 .then();
 
-       authToken=validatableResponse.extract().path("token");
+        authToken=validatableResponse.extract().path("token");
 
     }
 
