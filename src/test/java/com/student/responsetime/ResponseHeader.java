@@ -1,4 +1,4 @@
-package com.student;
+package com.student.responsetime;
 
 import org.testng.annotations.Test;
 

@@ -12,6 +12,8 @@
 
 
   <properties>
+      <serenity.version>4.0.18</serenity.version>
+      <serenity.cucumber.version>4.0.18</serenity.cucumber.version>
     <hamcrest.version>1.3</hamcrest.version>
     <testng.version>7.8.0</testng.version>
     <rest-assured.version>5.5.0</rest-assured.version>
@@ -21,6 +23,26 @@
   </properties>
 
 <dependencies>
+    <!-- Serenity Core (BDD framework) -->
+    <dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-core</artifactId>
+        <version>${serenity.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-cucumber</artifactId>
+        <version>${serenity.cucumber.version}</version>
+    </dependency>
+
+    <!-- Serenity REST (for RestAssured integration) -->
+    <dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-rest-assured</artifactId>
+        <version>${serenity.version}</version>
+    </dependency>
+
     <!-- Hamcrest Dependency -->
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -43,6 +65,13 @@
       <version>${rest-assured.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+        <groupId>net.serenity-bdd</groupId>
+        <artifactId>serenity-junit</artifactId>
+        <version>${serenity.version}</version>
+    </dependency>
+
     <!-- json Array Dependency -->
     <dependency>
       <groupId>org.json</groupId>
